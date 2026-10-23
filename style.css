@@ -1,5 +1,5 @@
 * { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #0e1117; color: #e8eaf0; }
+body { margin: 0; font-family: 'Oswald', system-ui, sans-serif; background: #0e1117; color: #e8eaf0; }
 .bar { display: flex; gap: 8px; padding: 12px; justify-content: center; align-items: center; flex-wrap: wrap; position: sticky; top: 0; background: #0e1117; z-index: 5; border-bottom: 1px solid #222a38; }
 .bar button, .bar select { background: #1c2333; color: #e8eaf0; border: 1px solid #2c3650; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 14px; }
 .bar button.active { background: #2f6bff; border-color: #2f6bff; }
@@ -23,6 +23,7 @@ input:hover, input:focus, select:hover { border-color: #2c3650; background: #151
 #card select { appearance: none; -webkit-appearance: none; cursor: pointer; padding: 4px 6px; }
 select option { color: #000; }
 .title { display: block; width: 100%; font-size: 34px; font-weight: 800; letter-spacing: .5px; padding: 2px 6px; }
+.title, .tier-name, .day { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
 .sub { display: block; width: 100%; font-size: 16px; color: #8d97ad; padding: 2px 6px; margin-bottom: 14px; }
 
 ol { list-style: none; margin: 0; padding: 0; }
