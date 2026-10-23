@@ -1,0 +1,148 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #0e1117; color: #e8eaf0; }
+.bar { display: flex; gap: 8px; padding: 12px; justify-content: center; align-items: center; flex-wrap: wrap; position: sticky; top: 0; background: #0e1117; z-index: 5; border-bottom: 1px solid #222a38; }
+.bar button, .bar select { background: #1c2333; color: #e8eaf0; border: 1px solid #2c3650; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+.bar button.active { background: #2f6bff; border-color: #2f6bff; }
+.bar button.export { background: #17a05d; border-color: #17a05d; font-weight: 600; }
+.bar button:hover { filter: brightness(1.15); }
+.bar label { display: flex; align-items: center; gap: 5px; font-size: 13px; color: #cfd6e8; cursor: pointer; }
+.bar label input { cursor: pointer; }
+.tools { display: none; align-items: center; gap: 6px; flex-wrap: wrap; }
+#status, #rstatus { font-size: 12px; color: #8d97ad; min-width: 40px; }
+#fit { font-size: 12px; color: #ffb020; }
+
+#card { width: 760px; max-width: none; margin: 20px auto; padding: 28px; background: linear-gradient(160deg, #141a28, #0b0f18); border-radius: 16px; border: 1px solid #222a38; }
+#card.framed { display: flex; flex-direction: column; }
+#card.framed > :first-child { margin-top: auto; }
+#card.framed > :last-child { margin-bottom: auto; }
+
+input, select { font: inherit; color: inherit; background: transparent; border: 1px solid transparent; border-radius: 6px; outline: none; }
+input:hover, input:focus, select:hover { border-color: #2c3650; background: #151b2a; }
+#card select { appearance: none; -webkit-appearance: none; cursor: pointer; padding: 4px 6px; }
+select option { color: #000; }
+.title { display: block; width: 100%; font-size: 34px; font-weight: 800; letter-spacing: .5px; padding: 2px 6px; }
+.sub { display: block; width: 100%; font-size: 16px; color: #8d97ad; padding: 2px 6px; margin-bottom: 14px; }
+
+ol { list-style: none; margin: 0; padding: 0; }
+.handle { cursor: grab; user-select: none; width: 14px; flex-shrink: 0; }
+
+.logo { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.94); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 800; color: #111; }
+.logo img { width: 30px; height: 30px; object-fit: contain; }
+
+/* ---------- Layout containers ---------- */
+.cols { display: flex; gap: 14px; align-items: flex-start; }
+.cols .rlist { flex: 1; min-width: 0; }
+.rlist { min-height: 20px; }
+
+/* ---------- Team bars ---------- */
+.team { display: flex; align-items: center; gap: 10px; padding: 5px 10px 5px 8px; border-radius: 10px; margin-bottom: 5px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.team .handle { opacity: .5; }
+.team .rk { width: 30px; text-align: right; font-weight: 800; font-size: 20px; flex-shrink: 0; }
+.team .info { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; }
+.team .nm { font-weight: 700; font-size: 16px; width: 200px; flex-shrink: 0; white-space: nowrap; }
+.team .info.nonote .nm { width: auto; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.team .note { flex: 1; min-width: 0; font-size: 13px; padding: 4px 6px; opacity: .92; }
+.team .note::placeholder { color: inherit; opacity: .45; }
+.team input:hover, .team input:focus { background: rgba(0,0,0,.22); border-color: rgba(255,255,255,.28); }
+.tierbtn { background: rgba(0,0,0,.25); color: inherit; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; font-size: 11px; padding: 3px 7px; cursor: pointer; opacity: .55; flex-shrink: 0; }
+.tierbtn:hover { opacity: 1; }
+
+/* Record pill (read-only) */
+.trecw { width: 58px; flex-shrink: 0; border-radius: 6px; background: rgba(0,0,0,.45); }
+.trec { display: block; width: 100%; text-align: center; font-size: 13px; font-weight: 800; padding: 4px 2px; color: #fff; cursor: default; user-select: none; }
+.trecw.empty .trec { opacity: .4; }
+
+/* Movement pills */
+.mv { width: 46px; flex-shrink: 0; text-align: center; font-size: 12px; font-weight: 800; padding: 3px 0; border-radius: 6px; background: rgba(0,0,0,.42); }
+.mv.up { color: #5dff9a; }
+.mv.down { color: #ff7b7b; }
+.mv.same { color: rgba(255,255,255,.55); }
+.mv.new { color: #ffd45e; }
+
+/* Two-column compact rows */
+.two .team { min-height: 54px; gap: 8px; padding: 5px 8px 5px 6px; }
+.two .team .rk { width: 26px; font-size: 18px; }
+.two .team .logo { width: 34px; height: 34px; }
+.two .team .logo img { width: 27px; height: 27px; }
+.two .team .info { flex-direction: column; align-items: stretch; justify-content: center; gap: 0; }
+.two .team .nm { width: auto; min-width: 0; flex-shrink: 1; font-size: 15px; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; }
+.two .team .note { font-size: 12px; padding: 2px 6px; line-height: 1.2; }
+.two .mv { width: 40px; }
+.two .tierbtn { padding: 3px 6px; }
+.two .tier { margin: 6px 0 8px; }
+
+/* ---------- Risers / fallers ---------- */
+.movers { display: flex; gap: 12px; margin: 0 0 14px; }
+.mcol { flex: 1; min-width: 0; padding: 10px 12px; border-radius: 12px; background: #111726; border: 1px solid #222a38; }
+.mcol.up { border-top: 3px solid #4ade80; }
+.mcol.down { border-top: 3px solid #ff6b6b; }
+.mh { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.mcol.up .mh { color: #4ade80; }
+.mcol.down .mh { color: #ff6b6b; }
+.mi { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.mi .logo { width: 28px; height: 28px; }
+.mi .logo img { width: 22px; height: 22px; }
+.mn { flex: 1; min-width: 0; font-weight: 700; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mr { font-size: 12px; color: #8d97ad; white-space: nowrap; }
+.md { width: 40px; text-align: right; font-weight: 800; font-size: 13px; }
+.md.up { color: #4ade80; }
+.md.down { color: #ff6b6b; }
+.mnone { color: #55607a; font-size: 13px; padding: 4px 0; }
+
+/* ---------- Tier breaks ---------- */
+.tier { display: flex; align-items: center; gap: 10px; padding: 8px 10px 8px 8px; margin: 14px 0 8px; border-radius: 8px; color: #fff; }
+.tier .handle { opacity: .6; }
+.tier-name { flex: 1; min-width: 0; font-size: 18px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 2px 6px; }
+.tier input[type=color] { width: 30px; height: 26px; padding: 0; border: none; background: none; cursor: pointer; }
+.tier input[type=color]:hover { background: none; }
+
+/* ---------- Record bar (games) ---------- */
+.recbar { display: flex; gap: 10px; margin: 0 0 6px; }
+.rec { flex: 1; display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; border-radius: 10px; background: #111726; border: 1px solid #222a38; }
+.rl { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8d97ad; }
+.rv { font-size: 24px; font-weight: 800; margin-left: auto; }
+.rp { font-size: 13px; color: #8d97ad; width: 48px; text-align: right; }
+
+/* ---------- Games ---------- */
+.day { margin: 20px 0 2px; padding-bottom: 4px; font-size: 15px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #cfd6e8; border-bottom: 1px solid #2c3650; }
+.slot { margin: 10px 0 6px 2px; font-size: 12px; font-weight: 700; color: #7f8aa6; }
+.msg { color: #8d97ad; padding: 24px; text-align: center; }
+.game { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 10px; background: #111726; margin-bottom: 6px; }
+.side { flex: 1; display: flex; align-items: center; gap: 8px; padding: 5px 6px; border-radius: 8px; border: 2px solid transparent; min-width: 0; }
+.side.win { border-color: #17a05d; background: rgba(23,160,93,.12); }
+.side.win.wrong { border-color: #e5484d; background: rgba(229,72,77,.12); }
+.side.lost .logo, .side.lost .nick { opacity: .45; }
+.side .logo { width: 32px; height: 32px; }
+.side .logo img { width: 26px; height: 26px; }
+.side .nick { flex: 1; min-width: 0; font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side select { flex: 1; min-width: 0; font-weight: 600; font-size: 13px; }
+.score { width: 46px; text-align: center; font-weight: 800; font-size: 18px; -moz-appearance: textfield; }
+.score::-webkit-outer-spin-button, .score::-webkit-inner-spin-button { -webkit-appearance: none; }
+.at { color: #55607a; font-weight: 700; }
+.pick { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #3a4560; background: transparent; color: transparent; cursor: pointer; font-size: 14px; line-height: 1; padding: 0; flex-shrink: 0; }
+.side.win .pick { background: #17a05d; border-color: #17a05d; color: #fff; }
+.side.win.wrong .pick { background: #e5484d; border-color: #e5484d; }
+
+.res { width: 66px; flex-shrink: 0; text-align: center; line-height: 1.2; }
+.res .rt { display: block; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #7f8aa6; }
+.res .rs { display: block; font-size: 15px; font-weight: 800; }
+.res.ok .rs { color: #4ade80; }
+.res.bad .rs { color: #ff6b6b; }
+.res.in .rt { color: #ffb020; }
+
+.del { background: none; border: none; color: inherit; opacity: .6; cursor: pointer; font-size: 16px; }
+.del:hover { opacity: 1; color: #ff5d5d; }
+.add { margin-top: 10px; width: 100%; padding: 10px; border: 2px dashed #2c3650; background: none; color: #8d97ad; border-radius: 10px; cursor: pointer; }
+.add.top { margin: 0 0 8px; padding: 6px; font-size: 13px; }
+.foot { margin-top: 14px; font-size: 12px; color: #55607a; text-align: right; }
+
+/* ---------- Export mode: hide editing controls, drop card chrome ---------- */
+#card.exporting { background: none; border-color: transparent; border-radius: 0; }
+#card.exporting .handle, #card.exporting .del, #card.exporting .add,
+#card.exporting .tierbtn, #card.exporting .tier input[type=color] { display: none; }
+#card.exporting input, #card.exporting select { border-color: transparent !important; background: transparent !important; }
+#card.exporting input::placeholder { color: transparent; }
+#card.exporting .pick { visibility: hidden; }
+#card.exporting .side.win .pick { visibility: visible; }
+#card.exporting .trecw.empty { visibility: hidden; }
+#card.exporting .two .note:placeholder-shown { display: none; }

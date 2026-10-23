@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NFL Picks Maker</title>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bar">
+  <button id="tabRank" class="active">Power Rankings</button>
+  <button id="tabGames">Game Predictions</button>
+
+  <span id="rankTools" class="tools">
+    <select id="layoutSel" title="Layout">
+      <option value="one">1 column</option>
+      <option value="two">2 columns</option>
+    </select>
+    <label title="Show a notes field on each team"><input type="checkbox" id="noteChk"> Notes</label>
+    <label title="Show each team's record (loaded from ESPN)"><input type="checkbox" id="recChk"> Records</label>
+    <button id="recRefresh" title="Reload records from ESPN standings">↻</button>
+    <label title="Show a biggest risers / fallers box (needs a snapshot to compare against)"><input type="checkbox" id="movChk"> Movers box</label>
+    <select id="cmpSel" title="Show movement arrows compared to this snapshot"></select>
+    <button id="snapSave" title="Save the current rankings as a snapshot to compare against later">📌 Save snapshot</button>
+    <button id="snapDel" title="Delete the selected snapshot">🗑</button>
+    <span id="rstatus"></span>
+  </span>
+
+  <span id="weekWrap" class="tools">
+    <select id="weekSel"></select>
+    <button id="refresh" title="Reload schedule & results">↻</button>
+    <button id="autopick" title="For every game with no pick yet, pick whichever team is ranked higher in your Power Rankings">🪄 Auto-pick</button>
+    <button id="clearpicks" title="Clear this week's picks (finished games are kept so your record doesn't change)">Clear picks</button>
+    <span id="status"></span>
+  </span>
+
+  <select id="sizeSel" title="Export size"></select>
+  <span id="fit"></span>
+  <button id="reset">Reset</button>
+  <button id="export" class="export">⬇ Export PNG</button>
+</div>
+
+<div id="card"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
